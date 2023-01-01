@@ -88,8 +88,8 @@ export const sendCartData = (cart) => {
       dispatch(
         uiActions.showNotification({
           status: "error",
-          title: "Something went wrong",
-          message: "Card data not sent",
+          title: "Error",
+          message: "Something went wrong",
         })
       );
     }
