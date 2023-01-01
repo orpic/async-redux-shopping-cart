@@ -1,0 +1,11 @@
+.product-title {
+  font-size: 3.6rem;
+  font-weight: 700;
+  color: #4268b2;
+  text-align: center;
+  margin-top: 2.4rem;
+}
+
+.container-col {
+  flex-direction: column;
+}

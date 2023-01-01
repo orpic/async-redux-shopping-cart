@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1.2rem;
+  background-color: #b3c3e0;
+}
+.logo {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.cart-quantity {
+  font-weight: inherit;
+  color: #b3c3e0;
+  background-color: #4268b2;
+  padding: 3px 16px;
+  margin-left: 8px;
+  border-radius: 20px;
+  transition: all 0.3s;
+}
+
+.btn:hover .cart-quantity {
+  color: #4268b2;
+  background-color: #b3c3e0;
+}

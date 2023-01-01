@@ -1,0 +1,17 @@
+ul {
+  list-style: none;
+}
+
+.cart-box {
+  width: 550px;
+  background-color: #b3c3e0;
+  margin: 2.4rem;
+  padding: 1.6rem;
+}
+.cart-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+  text-align: center;
+}
