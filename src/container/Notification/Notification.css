@@ -3,6 +3,7 @@
   top: 11px;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: #ecf0f7;
   padding: 1rem;
   margin: 2rem 0;
 
@@ -17,6 +18,7 @@
 
 .noti-error {
   background-color: #bb4444;
+  color: #fff;
 }
 
 .noti-success {
