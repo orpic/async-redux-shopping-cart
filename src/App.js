@@ -3,7 +3,8 @@ import "./App.css";
 
 import { Cart, Header, Item, Notification } from "./container";
 import { useSelector, useDispatch } from "react-redux";
-import { uiActions } from "./store/uiSlice";
+// import { uiActions } from "./store/uiSlice";
+import { sendCartData } from "./store/cartSlice";
 
 function App() {
   const showCart = useSelector((state) => state.ui.cartVisible);
@@ -16,45 +17,10 @@ function App() {
   // can be implemented in any component
   // and the data tranformation logic inside a reducer
   const cart = useSelector((state) => state.cart);
-  const databaseUrl = process.env.REACT_APP_realtimeDatabaseUrl + "/cart.json";
+
   useEffect(() => {
-    dispatch(
-      uiActions.showNotification({
-        status: "pending",
-        title: "Sending",
-        message: "Sending Cart Data",
-      })
-    );
-    const sendCartData = async () => {
-      const response = await fetch(databaseUrl, {
-        method: "PUT",
-        body: JSON.stringify(cart),
-      });
-
-      if (!response.ok) {
-        throw new Error("Something went wrong, cart data not sent");
-      }
-
-      dispatch(
-        uiActions.showNotification({
-          status: "success",
-          title: "Success",
-          message: "Added to cart",
-        })
-      );
-
-      // const responseData = await response.json();
-    };
-    sendCartData().catch((error) => {
-      dispatch(
-        uiActions.showNotification({
-          status: "error",
-          title: "Something went wrong",
-          message: "Card data not sent",
-        })
-      );
-    });
-  }, [cart, databaseUrl, dispatch]);
+    dispatch(sendCartData(cart));
+  }, [cart, dispatch]);
   // }, [cart, dispatch]);
   // react-redux ensures that dispatch never changes
   // can be added for completness
