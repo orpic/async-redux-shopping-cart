@@ -6,8 +6,8 @@ import CartItem from "./CartItem";
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
 
-  console.log("cartItems");
-  console.log(cartItems);
+  // console.log("cartItems");
+  // console.log(cartItems);
   return (
     <div className="container-center">
       <div className="cart-box">

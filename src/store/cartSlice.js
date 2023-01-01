@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { uiActions } from "./uiSlice";
+// import { uiActions } from "./uiSlice";
 
 const cartSlice = createSlice({
   name: "cart",
@@ -8,12 +8,18 @@ const cartSlice = createSlice({
     items: [],
     totalQuantity: 0,
     // totalAmount: 0,
+    changed: false,
   },
   reducers: {
+    replaceCart(state, action) {
+      state.totalQuantity = action.payload.totalQuantity;
+      state.items = action.payload.items;
+    },
     addItemToCart(state, action) {
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item.id === newItem.id);
       state.totalQuantity++;
+      state.changed = true;
       if (!existingItem) {
         state.items.push({
           id: newItem.id,
@@ -31,6 +37,8 @@ const cartSlice = createSlice({
       const id = action.payload;
       const existingItem = state.items.find((item) => item.id === id);
       state.totalQuantity--;
+      state.changed = true;
+
       if (existingItem.quantity === 1) {
         state.items = state.items.filter((item) => item.id !== id);
       } else {
@@ -40,66 +48,6 @@ const cartSlice = createSlice({
     },
   },
 });
-
-//after the slice
-//this sendCartData immediately without doing anything returns another function
-// async one
-//
-// we dispatch notification
-// another nested function for sending http request
-// called insisde a try catch
-// notification with succeess and error
-
-//where do we call it
-export const sendCartData = (cart) => {
-  return async (dispatch) => {
-    dispatch(
-      uiActions.showNotification({
-        status: "pending",
-        title: "Sending",
-        message: "Sending Cart Data",
-      })
-    );
-
-    const sendRequest = async () => {
-      const databaseUrl =
-        process.env.REACT_APP_realtimeDatabaseUrl + "/cart.json";
-      const response = await fetch(databaseUrl, {
-        method: "PUT",
-        body: JSON.stringify(cart),
-      });
-
-      if (!response.ok) {
-        throw new Error("Something went wrong, cart data not sent");
-      }
-    };
-
-    try {
-      await sendRequest();
-
-      dispatch(
-        uiActions.showNotification({
-          status: "success",
-          title: "Success",
-          message: "Added to cart",
-        })
-      );
-    } catch (error) {
-      dispatch(
-        uiActions.showNotification({
-          status: "error",
-          title: "Error",
-          message: "Something went wrong",
-        })
-      );
-    }
-
-    // dispatch();
-  };
-
-  //redux creates this kind of action creator for each of the reducer function
-  // return {type: " ", payload: ...}
-};
 
 export const cartActions = cartSlice.actions;
 
