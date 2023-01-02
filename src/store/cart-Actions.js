@@ -29,8 +29,15 @@ export const fetchCartData = () => {
       dispatch(
         uiActions.showNotification({
           status: "error",
-          title: "Error",
-          message: "Fetching failed",
+          title: "firebase detached",
+          message: "no persisted data to fetch",
+        })
+      );
+      dispatch(
+        uiActions.showNotification({
+          status: "success",
+          title: "firebase detached",
+          message: "no persisted data to fetch",
         })
       );
     }
@@ -88,8 +95,15 @@ export const sendCartData = (cart) => {
       dispatch(
         uiActions.showNotification({
           status: "error",
-          title: "Error",
-          message: "Something went wrong",
+          title: "firebase detached",
+          message: "data is not persistent anymore",
+        })
+      );
+      dispatch(
+        uiActions.showNotification({
+          status: "success",
+          title: "firebase detached",
+          message: "data is not persistent anymore",
         })
       );
     }

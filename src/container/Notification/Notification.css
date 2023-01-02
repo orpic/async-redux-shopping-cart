@@ -17,10 +17,11 @@
 }
 
 .noti-error {
-  background-color: #bb4444;
-  color: #fff;
+  background-color: #ecf0f7;
+  color: #555;
 }
 
 .noti-success {
-  background-color: #1ad1b9;
+  background-color: #16a491;
+  color: #fff;
 }
