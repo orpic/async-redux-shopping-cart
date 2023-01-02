@@ -1,5 +1,7 @@
 ul {
   list-style: none;
+
+  text-align: center;
 }
 
 .cart-box {
@@ -14,4 +16,13 @@ ul {
   text-transform: capitalize;
   margin-bottom: 1rem;
   text-align: center;
+}
+
+.show-cart-items {
+  padding: 1rem;
+  margin: 1.2rem;
+  /* margin-top: 2rem; */
+  background-color: #d9e1f0;
+  display: inline-block;
+  font-size: 1.4rem;
 }

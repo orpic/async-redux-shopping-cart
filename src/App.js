@@ -15,7 +15,7 @@ function App() {
   // can be implemented in any component
   // and the data tranformation logic inside a reducer
   const dispatch = useDispatch();
-  const showCart = useSelector((state) => state.ui.cartVisible);
+  // const showCart = useSelector((state) => state.ui.cartVisible);
   const cart = useSelector((state) => state.cart);
   const notification = useSelector((state) => state.ui.notification);
 
@@ -44,7 +44,7 @@ function App() {
         />
       )}
       <Header />
-      {showCart && <Cart />}
+      {<Cart />}
       <Item />
     </>
   );
